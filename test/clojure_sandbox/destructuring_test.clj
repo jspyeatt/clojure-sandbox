@@ -38,7 +38,8 @@
 
   (testing "destructure a basic map. Note you specify in the curlys the bind variable followed by the key name"
     (let [{f-name :firstname l-name :lastname} simple-map-1-layer]
-      (is (= f-name (:firstname simple-map-1-layer)))))
+      (is (= f-name (:firstname simple-map-1-layer)))
+      (is (= l-name (:lastname simple-map-1-layer)))))
 
   (testing "destructure a nested map. You basically work from the inside out from left to right."
     (let [{{s :son d :daughter } :kid-map} simple-map-2-layer]
