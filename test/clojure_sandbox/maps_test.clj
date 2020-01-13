@@ -12,3 +12,7 @@
   (is (= {:age       57
           :firstname "Ken"
           :lastname  "Bills"} (sorted-map :firstname "Ken" :lastname "Bills" :age 57))))
+
+(deftest test-contains
+  (is (contains? simple-map :lastname))
+  (is (false? (contains? simple-map :height))))
