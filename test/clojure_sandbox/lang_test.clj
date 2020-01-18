@@ -55,6 +55,18 @@
    (is (= "Thisisatest" (str/join ["This" "is" "a" "test"])) "no separator specified")
    (is (= "This|is|a|test" (str/join "|" ["This" "is" "a" "test"]))))
 
+ (testing "blank?"
+   (is (not (str/blank? "a")))
+   (is (str/blank? "   "))
+   (is (str/blank? ""))
+   (is (str/blank? nil))
+
+  (testing "starts-with?"
+    (is (str/starts-with? "abcdef" "ab")))
+
+  (testing "includes?"
+    (is (str/includes? "abcdef" "def"))))
+
  (testing "split"
    (is (= ["This"
            "is"
