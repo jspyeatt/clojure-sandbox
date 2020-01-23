@@ -50,3 +50,12 @@
   (is (= [1 2 [4 5] [6 7]] (conj [1 2] [4 5] [6 7])) "nesting vectors inside another vector")
 
   (is (= '(3 2 1) (conj nil 1 2 3)) "default when first arg is nil is a seq"))
+
+(deftest test-concat
+  ; always returns a lazy sequence
+  (is (= '() (concat nil)) "just 1 arg nil")
+  (is (= '() (concat nil nil)) "2 arg nil")
+  (is (= '() (concat [] [])) "Empty vectors just returns empty sequence")
+  (is (= '(1 2 3 4 5 7 3 9) (concat [1] [2] [3] [4] '(5) #{7 9 3})) "All the arguments have to be a collection")
+  (is (= '(1 2 4 3 9 7 8) (concat [1] [2 4] [3 9] nil #{7 8})) "extracts all individual arguments out. Ignores nils.")
+  (is (= '(1 2 4 [5 6]) (concat [1] [2 4 [5 6]])) "nested vector inside another vector"))
